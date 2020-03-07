@@ -21,6 +21,7 @@ def main():
     #################
     device = torch.device('cuda')
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
     data_mode = 'Vid4'  # Vid4 | sharp_bicubic | blur_bicubic | blur | blur_comp
     # Vid4: SR
     # REDS4: sharp_bicubic (SR-clean), blur_bicubic (SR-blur);
@@ -101,6 +102,7 @@ def main():
     logger = logging.getLogger('base')
 
     #### log info
+    logger.info('Device: {}'.format(torch.cuda.get_device_name(0)))
     logger.info('Data: {} - {}'.format(data_mode, test_dataset_folder))
     logger.info('Padding mode: {}'.format(padding))
     logger.info('Model path: {}'.format(model_path))
